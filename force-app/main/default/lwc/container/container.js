@@ -8,4 +8,9 @@ export default class Container extends LightningElement {
     handleChange(event) {
         console.log(event.target.value);
     }
+
+    handleValidate(event) {
+        console.log(event.detail.valid);
+        console.log(event.detail.value);
+    }
 }

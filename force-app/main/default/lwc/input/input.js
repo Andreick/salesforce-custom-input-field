@@ -37,6 +37,7 @@ export default class Input extends LightningElement {
             case 'password': case 'url': break;
             default: this.type = 'text';
         }
+        this.valueSetup();
     }
 
     handleChange(event) {
@@ -48,18 +49,28 @@ export default class Input extends LightningElement {
     }
 
     applyMask(element) {
-        if (!!this.formatValue) {
+        if (typeof this.formatValue === 'function') {
             this.value = this.formatValue(element.value);
             element.value = this.value;
         }
     }
 
     validate(element) {
-        if (!!this.customValidation) {
+        if (typeof this.customValidation === 'function') {
             if (this.customValidation(element.value))
                 element.setCustomValidity(this.customValidationMessage);
             else element.setCustomValidity('');
             element.reportValidity();
+        }
+        const detail = { valid: element.validity.valid, value: this.value }
+        this.dispatchEvent(new CustomEvent("validate", { detail }));
+    }
+
+    valueSetup() {
+        if (this.value != undefined) {
+            if (typeof this.formatValue === 'function') {
+                this.value = this.formatValue(this.value);
+            }
         }
     }
 

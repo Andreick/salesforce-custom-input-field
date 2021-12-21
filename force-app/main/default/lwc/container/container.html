@@ -1,8 +1,8 @@
 <template>
     <lightning-card>
         <c-input type="cpf" label="CPF" onchange={handleChange}></c-input>
-        <c-input type="cep" label="CEP"></c-input>
-        <c-input type="celular" label="Celular"></c-input>
+        <c-input type="cep" label="CEP" value="00000000"></c-input>
+        <c-input type="celular" label="Celular" onvalidate={handleValidate}></c-input>
         <c-input type="telefone" label="Telefone"></c-input>
         <c-input type="email" label="Email"></c-input>
         <c-input type="number" label="Number" formatter="currency" step="0.2"></c-input>
