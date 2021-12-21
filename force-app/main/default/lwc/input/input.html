@@ -1,0 +1,17 @@
+<template>
+    <lightning-input
+    type={type} label={label} value={value}
+    placeholder={placeholder} field-level-help={fieldLevelHelp}
+    disabled={disabled} required={required} pattern={pattern}
+    min={min} max={max} minlength={minLength} maxlength={maxLength}
+    formatter={formatter} step={step}
+    message-when-bad-input={badInputMessage}
+    message-when-pattern-mismatch={patternMessage}
+    message-when-range-overflow={maxMessage}
+    message-when-range-underflow={minMessage}
+    message-when-too-long={maxLengthMessage}
+    message-when-too-short={minLengthMessage}
+    message-when-value-missing={requiredMessage}
+    onchange={handleChange} onblur={handleBlur}
+    ></lightning-input>
+</template>
