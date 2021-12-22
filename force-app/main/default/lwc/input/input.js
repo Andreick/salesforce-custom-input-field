@@ -1,5 +1,5 @@
 import { LightningElement, api } from 'lwc';
-import { celular, telefone, email, cpf, cep,
+import { celularReg, telefoneReg, emailReg, cepReg, cpfValido,
     formatarCelular, formatarTelefone, formatarCep, formatarCpf
 } from 'c/utils';
 
@@ -62,7 +62,7 @@ export default class Input extends LightningElement {
             else element.setCustomValidity('');
             element.reportValidity();
         }
-        const detail = { valid: element.validity.valid, value: this.value }
+        const detail = { valid: element.validity.valid, value: this.value };
         this.dispatchEvent(new CustomEvent("validate", { detail }));
     }
 
@@ -80,33 +80,33 @@ export default class Input extends LightningElement {
 
     celularSetup() {
         this.formatValue = formatarCelular;
-        this.customValidation = (value) => !celular.test(value);
+        this.customValidation = (value) => { if (value) return !celularReg.test(value); };
         this.customValidationMessage = this.celularMessage;
         this.type = 'tel';
     }
 
     telefoneSetup() {
         this.formatValue = formatarTelefone;
-        this.customValidation = (value) => !telefone.test(value);
+        this.customValidation = (value) => { if (value) return !telefoneReg.test(value) };
         this.customValidationMessage = this.telefoneMessage;
         this.type = 'tel';
     }
 
     emailSetup() {
-        this.customValidation = (value) => !email.test(value);
+        this.customValidation = (value) => { if (value) return !emailReg.test(value) };
         this.customValidationMessage = this.emailMessage;
     }
 
     cpfSetup() {
         this.formatValue = formatarCpf;
-        this.customValidation = (value) => !cpf.test(value);
+        this.customValidation = (value) => { if (value) return !cpfValido(value); };
         this.customValidationMessage = this.cpfMessage;
         this.type = 'text';
     }
 
     cepSetup() {
         this.formatValue = formatarCep;
-        this.customValidation = (value) => !cep.test(value);
+        this.customValidation = (value) => { if (value) return !cepReg.test(value); };
         this.customValidationMessage = this.cepMessage;
         this.type = 'text';
     }

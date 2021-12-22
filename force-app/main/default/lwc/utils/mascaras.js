@@ -1,4 +1,4 @@
-import { removerNaoDigitos } from "./utils";
+import { removerNaoDigitos } from "c/utils";
 
 const formatarCelular = (str) => {
     return formatarNumeroTelefone(str, /(\d{2})(\d{1,5})(\d{0,4})/);
@@ -31,6 +31,4 @@ const formatarCpf = (str) => {
     return m[1];
 }
 
-export {
-    formatarCelular, formatarTelefone, formatarCep, formatarCpf
-};
+export { formatarCelular, formatarTelefone, formatarCep, formatarCpf };

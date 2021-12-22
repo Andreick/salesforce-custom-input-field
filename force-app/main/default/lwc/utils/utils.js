@@ -1,4 +1,4 @@
-const removerNaoDigitos = str => str.replace(/\D+/g, '');
+const removerNaoDigitos = (str) => str.replace(/\D+/g, '');
 
 const obterIdade = (dateString) => {
     let today = new Date();
@@ -12,10 +12,7 @@ const obterIdade = (dateString) => {
     return age;
 }
 
-export {
-    removerNaoDigitos,
-    obterIdade
-};
-
-export * from './masks';
+export { removerNaoDigitos, obterIdade };
+export * from './mascaras';
 export * from './regex';
+export * from './validacoes';
